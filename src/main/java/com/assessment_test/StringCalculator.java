@@ -13,7 +13,14 @@ public class StringCalculator {
         }
 
         String delimiter = DEFAULT_DELIMITER;
-
+        if (numbers.startsWith("//")) {
+            Matcher matcher = Pattern.compile("//(\\[.*?\\]|.)\n").matcher(numbers);
+            if (matcher.find()) {
+                String customDelimiter = matcher.group(1);
+                delimiter = Pattern.quote(customDelimiter);
+                numbers = numbers.substring(matcher.end());
+            }
+        }
 
         int sum = 0;
         String[] numArray = numbers.split(delimiter);
