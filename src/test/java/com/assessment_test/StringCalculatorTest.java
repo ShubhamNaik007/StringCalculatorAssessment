@@ -18,4 +18,9 @@ public class StringCalculatorTest {
     void add_forSingleNumber(){
         assertEquals(1,calculator.add("1"));
     }
+
+    @Test
+    void add_forMultipleNumbers(){
+        assertEquals(6,calculator.add("1,5"));
+    }
 }
