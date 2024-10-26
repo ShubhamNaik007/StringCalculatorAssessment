@@ -10,6 +10,6 @@ public class StringCalculator {
         }
         int sum = 0;
 
-        return  0;
+        return  sum;
     }
 }
