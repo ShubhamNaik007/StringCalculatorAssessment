@@ -28,4 +28,9 @@ public class StringCalculatorTest {
     void add_forHandleAnyNumbers(){
         assertEquals(100,calculator.add("10,10,10,10,10,50"));
     }
+
+    @Test
+    void add_forNewNumbersLineFormat(){
+        assertEquals(6,calculator.add("1\n2,3"));
+    }
 }
