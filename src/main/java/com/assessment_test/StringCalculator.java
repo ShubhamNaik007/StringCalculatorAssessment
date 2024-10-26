@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     private static final String DEFAULT_DELIMITER = ",|\n";
-    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(\\[.*?])+\\n");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.+)\n");
 
     public int add(String numbers){
         if(numbers.isEmpty()){
@@ -14,7 +14,7 @@ public class StringCalculator {
 
         String delimiter = DEFAULT_DELIMITER;
         if (numbers.startsWith("//")) {
-            Matcher matcher = Pattern.compile("//(\\[.*?\\]|.)\n").matcher(numbers);
+            Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(numbers);
             if (matcher.find()) {
                 String customDelimiter = matcher.group(1);
                 delimiter = Pattern.quote(customDelimiter);
@@ -27,13 +27,13 @@ public class StringCalculator {
         for (String num : numArray) {
             if (!num.isEmpty()) {
                 int number = Integer.parseInt(num);
-                if(number < 0){
+                if (number < 0) {
                     throw new IllegalArgumentException("Negative numbers are not allowed");
                 }
                 sum += number;
             }
         }
 
-        return  sum;
+        return sum;
     }
 }
