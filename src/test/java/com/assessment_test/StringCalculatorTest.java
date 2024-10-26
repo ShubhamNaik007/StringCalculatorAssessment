@@ -39,4 +39,9 @@ public class StringCalculatorTest {
     void add_forDelimiterFormat(){
         assertEquals(3,calculator.add("//;\n1;2"));
     }
+
+    @Test
+    void add_forNegativeNumberFormat(){
+        assertEquals("Negative numbers are not allowed",calculator.add("1,-2,3"));
+    }
 }
