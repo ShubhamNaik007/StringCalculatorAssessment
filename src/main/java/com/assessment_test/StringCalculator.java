@@ -27,6 +27,9 @@ public class StringCalculator {
         for (String num : numArray) {
             if (!num.isEmpty()) {
                 int number = Integer.parseInt(num);
+                if(number < 0){
+                    throw new IllegalArgumentException("Negative numbers are not allowed");
+                }
                 sum += number;
             }
         }
