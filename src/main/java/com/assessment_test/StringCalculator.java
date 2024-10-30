@@ -37,19 +37,8 @@ public class StringCalculator {
         throw new IllegalArgumentException("Negative numbers are not allowed "+sb);
     }
 
-    public int add(String numbers){
-        if(numbers.isEmpty()){
-            return 0;
-        }
-
+    public int sum(String[] numArray){
         int sum = 0;
-
-        if (numbers.startsWith("//")) {
-            numbers = handleDelimiter(numbers);
-        }
-
-        String[] numArray = numbers.split(delimiter);
-
         for (String num : numArray) {
             if (!num.isEmpty()) {
                 int number = Integer.parseInt(num);
@@ -65,5 +54,18 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    public int AdditionOfNumbers(String numbers){
+        if(numbers.isEmpty()){
+            return 0;
+        }
+        if (numbers.startsWith("//")) {
+            numbers = handleDelimiter(numbers);
+        }
+        String[] numArray = numbers.split(delimiter);
+        int result = 0;
+        result = sum(numArray);
+        return result;
     }
 }

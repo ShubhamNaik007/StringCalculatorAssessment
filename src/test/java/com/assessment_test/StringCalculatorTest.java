@@ -10,41 +10,47 @@ public class StringCalculatorTest {
     private final StringCalculator calculator = new StringCalculator();
 
     @Test
-    void add_emptyString(){
-        assertEquals(0,calculator.add(""));
+    void AdditionOfNumbers_emptyString(){
+        assertEquals(0,calculator.AdditionOfNumbers(""));
     }
 
     @Test
-    void add_forSingleNumber(){
-        assertEquals(1,calculator.add("1"));
+    void AdditionOfNumbers_forSingleNumber(){
+        assertEquals(1,calculator.AdditionOfNumbers("1"));
     }
 
     @Test
-    void add_forMultipleNumbers(){
-        assertEquals(6,calculator.add("1,5"));
+    void AdditionOfNumbers_forMultipleNumbers(){
+        assertEquals(6,calculator.AdditionOfNumbers("1,5"));
     }
 
     @Test
-    void add_forHandleAnyNumbers(){
-        assertEquals(100,calculator.add("10,10,10,10,10,50"));
+    void AdditionOfNumbers_forHandleAnyNumbers(){
+        assertEquals(100,calculator.AdditionOfNumbers("10,10,10,10,10,50"));
     }
 
     @Test
-    void add_forNewNumbersLineFormat(){
-        assertEquals(6,calculator.add("1\n2,3"));
+    void AdditionOfNumbers_forNewNumbersLineFormat(){
+        assertEquals(6,calculator.AdditionOfNumbers("1\n2,3"));
     }
 
 
     @Test
-    void add_forDelimiterFormat(){
-        assertEquals(3,calculator.add("//;\n1;2"));
+    void AdditionOfNumbers_forDelimiterFormat(){
+        assertEquals(3,calculator.AdditionOfNumbers("//;\n1;2"));
     }
 
     @Test
-    void add_forNegativeNumberFormat(){
+    void AdditionOfNumbers_forNegativeNumberFormat(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            calculator.add("1,-2,3,-4");
+            calculator.AdditionOfNumbers("1,-2,3,-4");
         });
         assertEquals("Negative numbers are not allowed -2,-4",exception.getMessage());
     }
+
+    @Test
+    void AdditionOfNumbers_forDelimiterPipeFormat(){
+        assertEquals(3,calculator.AdditionOfNumbers("//|\n1|2"));
+    }
+
 }
